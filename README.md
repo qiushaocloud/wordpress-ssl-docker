@@ -9,6 +9,7 @@
 3.  如果需要开启 https, 请将所需的文件放到 ./ssl_cetrts 下，默认文件名为 server.key 和 server.pem【注: 如果不需要 https，则不需要存放任何文件到 ./ssl_cetrts 下】
 4.  运行 ./run-docker.sh 【注：docker-compose 低版本识别不了 .env，需要进行升级，作者用的版本是: 1.29.2】
 5.  查看日志: docker logs qiushaocloud-wordpress-server
+6.  需要到 db 中手动创建配置的 WORDPRESS_DB_NAME
 
 #### 使用说明【内置 mysql】
 1.  执行命令授予执行脚本权限：`sed -i -e 's/\r$//' *.sh && chmod -R 755 *.sh`
@@ -16,6 +17,7 @@
 3.  如果需要开启 https, 请将所需的文件放到 ./ssl_cetrts 下，默认文件名为 server.key 和 server.pem【注: 如果不需要 https，则不需要存放任何文件到 ./ssl_cetrts 下】
 4.  运行 ./run-docker-db.sh 【注：docker-compose 低版本识别不了 .env，需要进行升级，作者用的版本是: 1.29.2】
 5.  查看日志: docker logs qiushaocloud-wordpress-server
+6.  需要到 db 中手动创建配置的 WORDPRESS_DB_NAME
 
 
 #### 参与贡献
