@@ -46,4 +46,4 @@ fi
 
 # a2enmod ssl
 
-docker-entrypoint.sh
+docker-entrypoint.sh $1
