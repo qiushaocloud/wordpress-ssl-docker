@@ -4,6 +4,8 @@ LABEL Author="qiushaocloud"
 LABEL Email="qiushaocloud@126.com"
 LABEL Site="www.qiushaocloud.com"
 
+RUN apt update \
+    && apt install -y net-tools vim
 
 COPY ./ssl-conf /etc/apache2/sites-ssl-conf-available
 COPY ./docker-entrypoint-ex.sh /usr/local/bin/docker-entrypoint-ex.sh
