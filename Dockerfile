@@ -13,4 +13,4 @@ RUN chmod +x /usr/local/bin/docker-entrypoint-ex.sh \
     && md5sum /etc/apache2/sites-enabled/000-default.conf >/etc/apache2/sites-ssl-conf-available/source-000-default-md5sum
 RUN a2enmod ssl
 
-ENTRYPOINT ["docker-entrypoint-ex.sh", "[apache2-foreground]"]
+ENTRYPOINT ["docker-entrypoint-ex.sh", "apache2-foreground"]
