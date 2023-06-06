@@ -1,0 +1,1 @@
+docker rm -f qiushaocloud-wordpress-server || true
