@@ -15,6 +15,7 @@ if [ $FORCE_HTTPS ]; then
 fi
 echo "SSL_KEY_PATH_TMP: $SSL_KEY_PATH_TMP"
 echo "SSL_CRT_PATH_TMP: $SSL_CRT_PATH_TMP"
+echo "FORCE_HTTPS_TMP: $FORCE_HTTPS_TMP"
 
 if [ -f "$SSL_KEY_PATH_TMP" ] && [ -f "$SSL_CRT_PATH_TMP" ]; then
     echo "exsit ssl need files, use https"
