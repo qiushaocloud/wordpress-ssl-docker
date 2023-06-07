@@ -7,7 +7,7 @@ services:
     hostname: qiushaocloud-wordpress-server
     restart: always
     ports:
-      - "$EXPORT_SERVER_PORT:#WP_CONTAINER_PORT"
+      - "$EXPORT_SERVER_PORT:$WP_CONTAINER_PORT"
     environment:
       WORDPRESS_DB_HOST: $WORDPRESS_DB_HOST
       WORDPRESS_DB_NAME: $WORDPRESS_DB_NAME
