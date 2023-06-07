@@ -10,6 +10,7 @@
 4.  运行 ./run-docker.sh 【注：docker-compose 低版本识别不了 .env，需要进行升级，作者用的版本是: 1.29.2】
 5.  查看日志: docker logs qiushaocloud-wordpress-server
 6.  需要到 db 中手动创建配置的 WORDPRESS_DB_NAME
+7.  您可以在网页中去部署 WordPress，需要注意: 您部署时候用的什么域名和端口，部署完后就需要用该域名和端口，因为数据库会进行存储
 
 #### 使用说明【内置 mysql】
 1.  执行命令授予执行脚本权限：`sed -i -e 's/\r$//' *.sh && chmod -R 755 *.sh`
@@ -18,6 +19,7 @@
 4.  运行 ./run-docker-db.sh 【注：docker-compose 低版本识别不了 .env，需要进行升级，作者用的版本是: 1.29.2】
 5.  查看日志: docker logs qiushaocloud-wordpress-server
 6.  需要到 db 中手动创建配置的 WORDPRESS_DB_NAME
+7.  您可以在网页中去部署 WordPress，需要注意: 您部署时候用的什么域名和端口，部署完后就需要用该域名和端口，因为数据库会进行存储
 
 
 #### 参与贡献
