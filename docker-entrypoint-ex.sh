@@ -30,7 +30,7 @@ if [ -f "$SSL_KEY_PATH_TMP" ] && [ -f "$SSL_CRT_PATH_TMP" ]; then
 
         if [ $WP_CONTAINER_PORT ] && [ "$WP_CONTAINER_PORT" != "443" ]; then
             echo "https use other port, WP_CONTAINER_PORT: $WP_CONTAINER_PORT"
-            sed -i s#:443/:$WP_CONTAINER_PORT/g /etc/apache2/sites-enabled/default-ssl.conf
+            sed -i s#:443#:$WP_CONTAINER_PORT#g /etc/apache2/sites-enabled/default-ssl.conf
         fi
     fi
     
@@ -46,7 +46,7 @@ else
         echo "/etc/apache2/sites-enabled/000-default.conf is default file, current is http env"
         if [ $WP_CONTAINER_PORT ] && [ "$WP_CONTAINER_PORT" != "443" ]; then
             echo "http use other port, WP_CONTAINER_PORT: $WP_CONTAINER_PORT"
-            sed -i s#:80/:$WP_CONTAINER_PORT/g /etc/apache2/sites-enabled/000-default.conf
+            sed -i s#:80#:$WP_CONTAINER_PORT#g /etc/apache2/sites-enabled/000-default.conf
         fi
     fi
 fi
