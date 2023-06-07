@@ -22,8 +22,7 @@ services:
     hostname: qiushaocloud-wordpress-server
     restart: always
     ports:
-      - "$EXPORT_HTTP_PORT:80"
-      - "$EXPORT_HTTPS_PORT:443"
+      - "$EXPORT_SERVER_PORT:#WP_CONTAINER_PORT"
     environment:
       WORDPRESS_DB_HOST: $WORDPRESS_DB_HOST
       WORDPRESS_DB_NAME: $WORDPRESS_DB_NAME
@@ -32,7 +31,7 @@ services:
       WORDPRESS_DEBUG: $WORDPRESS_DEBUG
       SSL_KEY_PATH: $SSL_KEY_PATH
       SSL_CRT_PATH: $SSL_CRT_PATH
-      FORCE_HTTPS: $FORCE_HTTPS
+      WP_CONTAINER_PORT: $WP_CONTAINER_PORT
     volumes:
       - $WORDPRESS_DATA_PATH:/var/www/html
       - ./ssl:/ssl
