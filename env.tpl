@@ -1,6 +1,6 @@
 # 端口设置
-EXPORT_SERVER_PORT=7080
-WP_CONTAINER_PORT=80
+EXPORT_SERVER_PORT=7080 # 映射到容器外的端口
+WP_CONTAINER_PORT=80 # 将容器中的 80 或 443 映射到容器外, 注意: 如果您是 http 则这里为 80，https 为 443，不能填写其它值
 
 # DB 设置
 WORDPRESS_DB_HOST="<WORDPRESS_DB_HOST>"

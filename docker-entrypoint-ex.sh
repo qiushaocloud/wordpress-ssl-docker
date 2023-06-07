@@ -27,28 +27,15 @@ if [ -f "$SSL_KEY_PATH_TMP" ] && [ -f "$SSL_CRT_PATH_TMP" ]; then
             echo "change default-ssl.conf /ssl_cetrts/server.key to $SSL_KEY_PATH_TMP"
             sed -i s#/ssl_cetrts/server.key#$SSL_KEY_PATH_TMP#g /etc/apache2/sites-enabled/default-ssl.conf
         fi
-
-        if [ $WP_CONTAINER_PORT ] && [ "$WP_CONTAINER_PORT" != "443" ]; then
-            echo "https use other port, WP_CONTAINER_PORT: $WP_CONTAINER_PORT"
-            sed -i s#:443#:$WP_CONTAINER_PORT#g /etc/apache2/sites-enabled/default-ssl.conf
-        fi
     fi
     
     if [ -f "/etc/apache2/sites-enabled/000-default.conf" ] && [ "`md5sum /etc/apache2/sites-enabled/000-default.conf`" == "`cat /etc/apache2/sites-ssl-conf-available/source-000-default-md5sum`" ]; then
-        echo "/etc/apache2/sites-enabled/000-default.conf is default file, but is https env, need move file"
-        echo "mv /etc/apache2/sites-enabled/000-default.conf"
-        mkdir -p /etc/apache2/sites-enabled-bak
-        mv /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled-bak/000-default.conf
+        echo "/etc/apache2/sites-enabled/000-default.conf is default file, but is https env"
+        echo "cp /etc/apache2/sites-enabled/000-default.conf"
+        cp -ra /etc/apache2/sites-ssl-conf-available/000-default.conf /etc/apache2/sites-enabled/000-default.conf
     fi
 else
     echo "not exsit ssl need files, use http"
-    if [ -f "/etc/apache2/sites-enabled/000-default.conf" ] && [ "`md5sum /etc/apache2/sites-enabled/000-default.conf`" == "`cat /etc/apache2/sites-ssl-conf-available/source-000-default-md5sum`" ]; then
-        echo "/etc/apache2/sites-enabled/000-default.conf is default file, current is http env"
-        if [ $WP_CONTAINER_PORT ] && [ "$WP_CONTAINER_PORT" != "443" ]; then
-            echo "http use other port, WP_CONTAINER_PORT: $WP_CONTAINER_PORT"
-            sed -i s#:80#:$WP_CONTAINER_PORT#g /etc/apache2/sites-enabled/000-default.conf
-        fi
-    fi
 fi
 
 
