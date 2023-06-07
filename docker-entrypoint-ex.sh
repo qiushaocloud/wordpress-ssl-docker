@@ -34,7 +34,7 @@ if [ -f "$SSL_KEY_PATH_TMP" ] && [ -f "$SSL_CRT_PATH_TMP" ]; then
         fi
     fi
     
-    if [ "`md5sum /etc/apache2/sites-enabled/000-default.conf`" == "`cat /etc/apache2/sites-ssl-conf-available/source-000-default-md5sum`" ]; then
+    if [ -f "/etc/apache2/sites-enabled/000-default.conf" ] && [ "`md5sum /etc/apache2/sites-enabled/000-default.conf`" == "`cat /etc/apache2/sites-ssl-conf-available/source-000-default-md5sum`" ]; then
         echo "/etc/apache2/sites-enabled/000-default.conf is default file, but is https env, need move file"
         echo "mv /etc/apache2/sites-enabled/000-default.conf"
         mkdir -p /etc/apache2/sites-enabled-bak
@@ -42,7 +42,7 @@ if [ -f "$SSL_KEY_PATH_TMP" ] && [ -f "$SSL_CRT_PATH_TMP" ]; then
     fi
 else
     echo "not exsit ssl need files, use http"
-    if [ "`md5sum /etc/apache2/sites-enabled/000-default.conf`" == "`cat /etc/apache2/sites-ssl-conf-available/source-000-default-md5sum`" ]; then
+    if [ -f "/etc/apache2/sites-enabled/000-default.conf" ] && [ "`md5sum /etc/apache2/sites-enabled/000-default.conf`" == "`cat /etc/apache2/sites-ssl-conf-available/source-000-default-md5sum`" ]; then
         echo "/etc/apache2/sites-enabled/000-default.conf is default file, current is http env"
         if [ $WP_CONTAINER_PORT ] && [ "$WP_CONTAINER_PORT" != "443" ]; then
             echo "http use other port, WP_CONTAINER_PORT: $WP_CONTAINER_PORT"
