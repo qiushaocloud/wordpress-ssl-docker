@@ -19,7 +19,7 @@ echo "FORCE_HTTPS_TMP: $FORCE_HTTPS_TMP"
 
 if [ -f "$SSL_KEY_PATH_TMP" ] && [ -f "$SSL_CRT_PATH_TMP" ]; then
     echo "exsit ssl need files, use https"
-    if [ -f "/etc/apache2/sites-enabled/default-ssl.conf" ]; then
+    if [ ! -f "/etc/apache2/sites-enabled/default-ssl.conf" ]; then
         echo "cp /etc/apache2/sites-enabled/default-ssl.conf"
         cp -ra /etc/apache2/sites-ssl-conf-available/default-ssl.conf /etc/apache2/sites-enabled/default-ssl.conf
         
@@ -35,7 +35,7 @@ if [ -f "$SSL_KEY_PATH_TMP" ] && [ -f "$SSL_CRT_PATH_TMP" ]; then
     fi
     
     if [ "$FORCE_HTTPS_TMP" == "yes" ]; then
-        if [ "`md5sum /etc/apache2/sites-enabled/000-default.conf`" = "`cat /etc/apache2/sites-ssl-conf-available/source-000-default-md5sum`" ]; then
+        if [ "`md5sum /etc/apache2/sites-enabled/000-default.conf`" == "`cat /etc/apache2/sites-ssl-conf-available/source-000-default-md5sum`" ]; then
             echo "/etc/apache2/sites-enabled/000-default.conf is default file"
             echo "cp /etc/apache2/sites-enabled/000-default.conf"
             cp -ra /etc/apache2/sites-ssl-conf-available/000-default.conf /etc/apache2/sites-enabled/000-default.conf
